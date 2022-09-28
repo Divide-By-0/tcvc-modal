@@ -1,0 +1,3 @@
+[submodule "TCVC"]
+	path = TCVC
+	url = https://github.com/lyh-18/TCVC-Temporally-Consistent-Video-Colorization.git
