@@ -4,20 +4,27 @@ import TCVC.codes.test_TCVC_onesampling_noGT.py
 setup_image = modal.Image.debian_slim().run_commands(
     [
         'ls',
-        'cd ~/project/codes/models/archs/networks/channelnorm_package/',
+        'cd ~/project/TCVC/codes/models/archs/networks/channelnorm_package/',
         'python setup.py develop',
-        'cd ~/project/codes/models/archs/networks/correlation_package/',
+        'cd ~/project/TCVC/codes/models/archs/networks/correlation_package/',
         'python setup.py develop',
-        'cd ~/project/codes/models/archs/networks/resample2d_package/',
+        'cd ~/project/TCVC/codes/models/archs/networks/resample2d_package/',
         'python setup.py develop',
-        'cd ~/project/codes',
+        'cd ~/project/TCVC/codes',
+        'export PYTHONPATH=~project/TCVC/codes'
         # "gdown 'https://drive.google.com/uc?id=1876eGDhyKhc2rx2X-A_FffB3ZX2FXTOc'" # Get video
     ],
 )
 
 stub = modal.Stub()
 
-@stub.function(mounts=[modal.Mount(local_dir="~/Documents/projects/tcvc-modal/", remote_dir="~/project"), modal.Mount(local_dir="~/Documents/projects/tcvc-modal/videos", remote_dir="/data2/yhliu/old_film")], image=setup_image.conda().conda_install(["cudatoolkit=10.2", "cudnn=7.6.5"]).pip_install(["tensorflow-gpu"]), gpu=True)
+@stub.function(mounts=[modal.Mount(local_dir="~/Documents/projects/tcvc-modal/", remote_dir="~/project"),
+                       modal.Mount(local_dir="~/Documents/projects/tcvc-modal/videos", remote_dir="/data2/yhliu/old_film")],
+               image=setup_image.conda()
+               .conda_install(["cudatoolkit=10.2", "cudnn=7.6.5"])
+            #    .pip_install(["tensorflow-gpu", "asposestorage", "sdata"])
+               .pip_install_from_requirements("./TCVC/codes/requirements.txt"),
+               gpu=True)
 def square(x):
     print("This code is running on a remote worker!")
     main()
