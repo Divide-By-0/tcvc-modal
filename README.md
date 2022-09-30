@@ -4,8 +4,16 @@ Running image colorization on video in the cloud
 
 ## Install
 
+On your laptop:
+
 ```
 git clone --recurse-submodules --remote-submodules git@github.com:Divide-By-0/tcvc-modal.git
+cd tcvc-modal && git clone https://github.com/Divide-By-0/TCVC-Temporally-Consistent-Video-Colorization
+```
+
+Setup on the machine running the code:
+
+```
 sudo apt update && sudo apt-get install -y python3-pip
 pip install --force-reinstall https://modal.com/api/client-library/us-szqX2y2eZXtjoc3loHEdiv/modal-0.0.33-py3-none-any.whl
 wget https://tcvc.s3.amazonaws.com/TCVC_IDC.zip # Colorization backbone model
