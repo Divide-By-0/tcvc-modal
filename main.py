@@ -10,11 +10,12 @@ CACHE_PATH = "~/Documents/projects/tcvc-modal"
                        modal.Mount(local_dir="~/Documents/projects/tcvc-modal/videos", remote_dir="/data2/yhliu/old_film")],
                image=setup_image.conda()
                .conda_install(["cudatoolkit=10.2", "cudnn=7.6.5"])
-               .pip_install_from_requirements("./TCVC/codes/requirements.txt").run_commands([
+               .pip_install_from_requirements("./TCVC/codes/requirements.txt")
+               .run_commands([
                     'apt-get update',
                     'apt-get install git -y'])
                .run_commands([
-                    'git clone --recursive git@github.com:Divide-By-0/tcvc-modal.git',
+                    'git clone --recursive https://github.com/Divide-By-0/tcvc-modal',
                     'cd tcvc-modal && git clone https://github.com/Divide-By-0/TCVC-Temporally-Consistent-Video-Colorization',
                     'ls',
                     'cd ~/project/TCVC/codes/models/archs/networks/channelnorm_package/',
