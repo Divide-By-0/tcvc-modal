@@ -7,7 +7,7 @@ Running image colorization on video in the cloud
 On your laptop:
 
 ```
-git clone --recurse-submodules --remote-submodules git@github.com:Divide-By-0/tcvc-modal.git
+git clone --recursive git@github.com:Divide-By-0/tcvc-modal.git
 cd tcvc-modal && git clone https://github.com/Divide-By-0/TCVC-Temporally-Consistent-Video-Colorization
 mv TCVC-Temporally-Consistent-Video-Colorization TCVC
 python3 main.py
