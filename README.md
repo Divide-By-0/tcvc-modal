@@ -1,6 +1,11 @@
 # tcvc-modal
 
-Running image colorization on video in the cloud
+Running image colorization on video in the cloud. Doesn't quite work due to CUDA settings.
+
+## Todo
+- Change the docker image to a specific CUDA type: modal.DockerhubImage('nvidia-cuda-devel-whatever').pip_install(...)
+- Add GPUs to the builder as well, by adding gpu=True to dockerfile_commands or run_commands
+- Debug and run based on the comments about specific software versions from [issue 6 on the original repo](https://github.com/lyh-18/TCVC-Temporally-Consistent-Video-Colorization/issues/6#issuecomment-1271935427)
 
 ## Install
 
